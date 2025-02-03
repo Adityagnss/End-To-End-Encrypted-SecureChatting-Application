@@ -45,7 +45,7 @@ Before running the application, make sure you have:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/end-to-end-encrypted-chat.git
+   git clone https://github.com/Adityagnss/End-To-End-Encrypted-SecureChatting-Application.git
    cd end-to-end-encrypted-chat
    ```
 
