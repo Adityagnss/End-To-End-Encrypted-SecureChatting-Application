@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+			integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+		<title>ConnectSecure App</title>
+	</head>
+	<body>
+		<div class="join-container">
+			<header class="join-header" style="border-style: solid;border-color: white;">
+				<h1 style="color:white"><i class="fas fa-comment"></i> ConnectSecure</h1>
+			</header>
+			<main class="join-main">
+				<div class="tab-buttons">
+					<button class="tab-btn active" onclick="showTab('join')">Join Room</button>
+					<button class="tab-btn" onclick="showTab('create')">Create Room</button>
+				</div>
+
+				<!-- Join Room Form -->
+				<form id="joinForm" action="/validate" method="POST">
+					<div class="form-control">
+						<label for="username">Username</label>
+						<input
+							type="text"
+							name="username"
+							id="username"
+							placeholder="Enter username..."
+							required
+						/>
+					</div>
+					<div class="form-control">
+						<label for="room">Room</label>
+						<input
+							type="text"
+							name="room"
+							id="room"
+							placeholder="Enter room name..."
+							required
+						/>
+					</div>
+					<div class="form-control">
+						<div class="key">
+							<label for="key">Room Password</label>
+							<input 
+								type="password" 
+								placeholder="Enter room password..." 
+								name="key" 
+								id="key" 
+								style="width:100%;height:40px;margin-top: 3px;"
+								required
+							>
+						</div>
+					</div>
+					<button type="submit" class="btn">Join Chat</button>
+				</form>
+
+				<!-- Create Room Form -->
+				<form id="createForm" action="/create-room" method="POST" style="display:none;">
+					<div class="form-control">
+						<label for="createUsername">Username</label>
+						<input
+							type="text"
+							name="username"
+							id="createUsername"
+							placeholder="Enter username..."
+							required
+						/>
+					</div>
+					<div class="form-control">
+						<label for="createRoom">Room Name</label>
+						<input
+							type="text"
+							name="roomName"
+							id="createRoom"
+							placeholder="Enter new room name..."
+							required
+						/>
+					</div>
+					<div class="form-control">
+						<div class="key">
+							<label for="createPassword">Room Password</label>
+							<input 
+								type="password" 
+								placeholder="Create room password..." 
+								name="password" 
+								id="createPassword" 
+								style="width:100%;height:40px;margin-top: 3px;"
+								required
+							>
+						</div>
+					</div>
+					<button type="submit" class="btn">Create Room</button>
+				</form>
+			</main>
+		</div>
+
+		<style>
+			.tab-buttons {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 20px;
+			}
+			.tab-btn {
+				width: 48%;
+				padding: 10px;
+				border: none;
+				background: #667aff;
+				color: white;
+				cursor: pointer;
+				border-radius: 5px;
+			}
+			.tab-btn.active {
+				background: #3f51b5;
+			}
+		</style>
+
+		<script>
+			function showTab(tabName) {
+				// Hide all forms
+				document.getElementById('joinForm').style.display = 'none';
+				document.getElementById('createForm').style.display = 'none';
+				
+				// Show selected form
+				if (tabName === 'join') {
+					document.getElementById('joinForm').style.display = 'block';
+				} else {
+					document.getElementById('createForm').style.display = 'block';
+				}
+				
+				// Update button styles
+				document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+				event.target.classList.add('active');
+			}
+		</script>
+	</body>
+</html>
